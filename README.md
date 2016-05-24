@@ -40,16 +40,17 @@ end
 ### Actions
 
 - install
+- uninstall
 
 ### Attributes
 
-| Name    | Value                | Default                   | Required |
-|:--------|:---------------------|:--------------------------|:---------|
-| action  | one of Symbol, Array | `:install`                | Yes      |
-| user    | String               | `node[:linuxbrew][:user]` | No       |
-| cwd     | String               | (no default)              | No       |
-| name    | String               | (no default)              | No       |
-| options | String               | (no default)              | No       |
+| Name    | Value                | Default                                 | Required |
+|:--------|:---------------------|:----------------------------------------|:---------|
+| action  | one of Symbol, Array | `:install`                              | Yes      |
+| user    | String               | `node[:linuxbrew][:user]` (integration) | No       |
+| cwd     | String               | (no default)                            | No       |
+| name    | String               | (no default)                            | No       |
+| options | String               | (no default)                            | No       |
 
 ## Contributing
 

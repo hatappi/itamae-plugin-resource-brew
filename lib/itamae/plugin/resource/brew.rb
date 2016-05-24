@@ -12,6 +12,8 @@ module Itamae
           case @current_action
           when :install
             attributes.installed = true
+          when :uninstall
+            attributes.installed = false
           end
         end
 
@@ -27,7 +29,17 @@ module Itamae
         end
 
         def action_install(options)
-          install! unless current.installed
+          unless current.installed
+            install!
+            updated!
+          end
+        end
+
+        def action_uninstall(action_options)
+          if current.installed
+            uninstall!
+            updated!
+          end
         end
 
         def installed_packages
@@ -40,6 +52,12 @@ module Itamae
 
         def install!
           cmd = ['brew', 'install', *Array(attributes.options)]
+          cmd << attributes.name
+          run_command(wrap_bin_bash(cmd))
+        end
+
+        def uninstall!
+          cmd = ['brew', 'uninstall', *Array(attributes.options)]
           cmd << attributes.name
           run_command(wrap_bin_bash(cmd))
         end
