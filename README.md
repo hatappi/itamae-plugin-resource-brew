@@ -20,7 +20,36 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "itamae/plugin/resource/brew"
+
+# brew install git
+brew 'git'
+
+# switch user
+brew 'git' do
+  user 'user'
+end
+
+# Install with options like: brew install --with-lua --with-luajit vim
+brew 'vim' do
+  options '--with-lua --with-luajit'
+end
+```
+
+### Actions
+
+- install
+
+### Attributes
+
+| Name    | Value                | Default                   | Required |
+|:--------|:---------------------|:--------------------------|:---------|
+| action  | one of Symbol, Array | `:install`                | Yes      |
+| user    | String               | `node[:linuxbrew][:user]` | No       |
+| cwd     | String               | (no default)              | No       |
+| name    | String               | (no default)              | No       |
+| options | String               | (no default)              | No       |
 
 ## Contributing
 
