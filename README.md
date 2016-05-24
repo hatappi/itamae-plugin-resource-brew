@@ -24,16 +24,38 @@ Or install it yourself as:
 require "itamae/plugin/resource/brew"
 
 # brew install git
-brew 'git'
-
-# switch user
 brew 'git' do
   user 'user'
 end
 
 # Install with options like: brew install --with-lua --with-luajit vim
 brew 'vim' do
+  user 'user'
   options '--with-lua --with-luajit'
+end
+```
+
+### with [itamae-plugin-recipe-linuxbrew](https://github.com/iyuuya/itamae-plugin-recipe-linuxbrew)
+
+When using [itamae-plugin-recipe-linuxbrew](https://github.com/iyuuya/itamae-plugin-recipe-linuxbrew), user attribute set to `node[:linuxbrew][:user]` automatically
+
+```yaml
+# node.yml
+linuxbrew:
+  user: user
+  packages:
+    - git
+    - gcc
+...
+```
+
+```ruby
+# recipe.rb
+include_recipe "linuxbrew::install"
+
+# auto-correct user to node[:linuxbrew][:user]
+brew 'imagemagick' do
+  options '--with-fontconfig --with-librsvg'
 end
 ```
 
