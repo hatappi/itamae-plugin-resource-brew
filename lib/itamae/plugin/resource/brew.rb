@@ -7,6 +7,7 @@ module Itamae
         define_attribute :action, default: :install
         define_attribute :name, type: String, default_name: true
         define_attribute :options, type: String
+        define_attribute :user, type: String
 
         def pre_action
           case @current_action
@@ -19,7 +20,9 @@ module Itamae
 
         def set_current_attributes
           if node[:linuxbrew] && node[:linuxbrew][:user]
-            attributes.user ||= node[:linuxbrew] && node[:linuxbrew][:user]
+            attributes.user ||= node[:linuxbrew][:user]
+          elsif node[:linuxbrew] && node[:linuxbrew][:users]
+            attributes.user ||= node[:linuxbrew][:users].first
           end
 
           ensure_brew_availability
