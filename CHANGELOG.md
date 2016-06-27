@@ -1,3 +1,8 @@
+## v0.0.2
+### Added
+
+- user attribute
+
 ## v0.0.1
 ### Added
 

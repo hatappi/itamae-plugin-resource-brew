@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "itamae-plugin-resource-brew"
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.authors       = ["iyuuya"]
   spec.email         = ["i.yuuya@gmail.com"]
 
